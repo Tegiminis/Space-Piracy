@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dehoi63e4uru4"]
+
+[ext_resource type="Script" uid="uid://vi18hjd2sbii" path="res://actors/player/player.gd" id="1_ilk7j"]
+[ext_resource type="Texture2D" uid="uid://b3chcwm3qclqe" path="res://sprites/Kitty-Fighter-1.png" id="1_nvxhs"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ilk7j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nvxhs")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-16.0553, 40.7398)
+polygon = PackedVector2Array(14.0553, -102.74, 18.0553, -102.74, 30.0553, -88.7398, 32.0553, -79.7398, 38.0553, -67.7398, 77.0553, -29.7398, 77.0553, -23.7398, 51.0553, 3.26018, -18.9447, 3.26018, -44.9447, -23.7398, -44.9447, -29.7398, -5.9447, -68.7398, 0.0552979, -80.7398, 2.0553, -89.7398)
