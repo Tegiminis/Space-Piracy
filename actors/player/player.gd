@@ -5,6 +5,7 @@ extends RigidBody2D
 
 @onready var gui_speed = $Control/Speed
 @onready var gui_torque = $Control/Rotation
+@onready var camera = $Camera2D
 
 func _input(event: InputEvent) -> void:
 	pass
@@ -33,4 +34,9 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("rotate_cw"):
 		apply_torque(100)
+	
+	if Input.is_action_just_pressed("zoom_in"):
+		camera.zoom *= 1.1
+	if Input.is_action_just_pressed("zoom_out"):
+		camera.zoom *= 0.9
 	
