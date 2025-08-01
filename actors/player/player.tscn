@@ -1,14 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://dehoi63e4uru4"]
+[gd_scene load_steps=5 format=3 uid="uid://dehoi63e4uru4"]
 
 [ext_resource type="Script" uid="uid://vi18hjd2sbii" path="res://actors/player/player.gd" id="1_ilk7j"]
 [ext_resource type="Texture2D" uid="uid://b3chcwm3qclqe" path="res://sprites/Kitty-Fighter-1.png" id="1_nvxhs"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilk7j"]
+size = Vector2(20, 95)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ax26v"]
+radius = 35.0
+
+[node name="Player" type="RigidBody2D"]
+gravity_scale = 0.0
+inertia = 10.0
+linear_damp_mode = 1
 script = ExtResource("1_ilk7j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nvxhs")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-16.0553, 40.7398)
-polygon = PackedVector2Array(14.0553, -102.74, 18.0553, -102.74, 30.0553, -88.7398, 32.0553, -79.7398, 38.0553, -67.7398, 77.0553, -29.7398, 77.0553, -23.7398, 51.0553, 3.26018, -18.9447, 3.26018, -44.9447, -23.7398, -44.9447, -29.7398, -5.9447, -68.7398, 0.0552979, -80.7398, 2.0553, -89.7398)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ilk7j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_ax26v")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Rotation" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -74.0
+offset_top = -82.0
+offset_right = -34.0
+offset_bottom = -59.0
+
+[node name="Speed" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -74.0
+offset_top = -110.0
+offset_right = -34.0
+offset_bottom = -87.0

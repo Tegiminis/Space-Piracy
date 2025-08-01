@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://r53hx63atqvf"]
+[gd_scene load_steps=3 format=3 uid="uid://r53hx63atqvf"]
+
+[ext_resource type="PackedScene" uid="uid://dehoi63e4uru4" path="res://actors/player/player.tscn" id="1_qa1h0"]
+[ext_resource type="Texture2D" uid="uid://dnbpr2tvbwrfk" path="res://sprites/space_backdrop.jpg" id="2_btyhq"]
 
 [node name="DebugMain" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_qa1h0")]
+position = Vector2(469, 293)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(10, 10)
+texture = ExtResource("2_btyhq")
