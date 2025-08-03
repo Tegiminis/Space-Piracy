@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://r53hx63atqvf"]
+[gd_scene load_steps=6 format=3 uid="uid://r53hx63atqvf"]
 
 [ext_resource type="PackedScene" uid="uid://dehoi63e4uru4" path="res://actors/player/player.tscn" id="1_qa1h0"]
 [ext_resource type="Texture2D" uid="uid://dnbpr2tvbwrfk" path="res://sprites/space_backdrop.jpg" id="2_btyhq"]
+[ext_resource type="PackedScene" uid="uid://bjfvop78828wx" path="res://objects/cargo/Container.tscn" id="3_nve11"]
+[ext_resource type="Script" uid="uid://h7tcafjig66e" path="res://resources/item.gd" id="4_a3sma"]
+
+[sub_resource type="Resource" id="Resource_a3sma"]
+resource_local_to_scene = true
+script = ExtResource("4_a3sma")
+weight = 1
+name = "Debug"
+base_value = 1.0
+can_stack = true
+metadata/_custom_type_script = "uid://h7tcafjig66e"
 
 [node name="DebugMain" type="Node2D"]
 
@@ -12,3 +23,8 @@ position = Vector2(469, 293)
 z_index = -1
 scale = Vector2(10, 10)
 texture = ExtResource("2_btyhq")
+
+[node name="Cargo" parent="." instance=ExtResource("3_nve11")]
+position = Vector2(361, 193)
+item = SubResource("Resource_a3sma")
+stacks = 9

@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjfvop78828wx"]
+
+[ext_resource type="Script" uid="uid://cdyshjrjp06sq" path="res://objects/cargo/container.gd" id="1_cyjns"]
+[ext_resource type="Texture2D" uid="uid://ng5bxajltodo" path="res://sprites/pickup-1-sheet.png" id="2_chr78"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rlx8"]
+radius = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chr78"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_d2knu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_y4q8u"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0jk7g"]
+_data = {
+&"RESET": SubResource("Animation_d2knu"),
+&"idle": SubResource("Animation_y4q8u")
+}
+
+[node name="Container" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_cyjns")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8rlx8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_chr78")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_chr78")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_0jk7g")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

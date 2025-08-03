@@ -7,6 +7,20 @@ extends RigidBody2D
 @onready var gui_torque = $Control/Rotation
 @onready var camera = $Camera2D
 
+var cargo : Dictionary
+var weight : int:
+	get:
+		var _weight = 0
+		for item in cargo:
+			_weight += item["ref"].weight * item["stacks"]
+		return _weight
+	set(value):
+		push_error(str(self) +": You cannot set an inventory's weight directly!")
+@export var weight_max : int = 10
+
+func _ready() -> void:
+	cargo = {}
+
 func _input(event: InputEvent) -> void:
 	pass
 

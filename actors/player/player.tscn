@@ -10,6 +10,8 @@ size = Vector2(20, 95)
 radius = 35.0
 
 [node name="Player" type="RigidBody2D"]
+z_index = 1
+collision_mask = 4
 gravity_scale = 0.0
 inertia = 10.0
 linear_damp_mode = 1
