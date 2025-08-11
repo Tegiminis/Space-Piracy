@@ -35,5 +35,6 @@ func add_item(item:Item, stacks:int = 1) -> int:
 		else:
 			inventory[item.name] = item_dict
 		stacks_left -= to_add
-	
+		added_item.emit(item, to_add)
+		
 	return stacks_left

@@ -41,3 +41,5 @@ script = ExtResource("3_ax26v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CargoInventory"]
 shape = SubResource("RectangleShape2D_lsqbn")
+
+[connection signal="added_item" from="CargoInventory" to="." method="_on_cargo_inventory_added_item"]

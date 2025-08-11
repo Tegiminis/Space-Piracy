@@ -32,7 +32,7 @@ texture = ExtResource("2_btyhq")
 [node name="Cargo" parent="." instance=ExtResource("3_nve11")]
 position = Vector2(361, 193)
 item = SubResource("Resource_4b5sl")
-stacks = 9
+stacks = 11
 
 [node name="HUD" parent="." instance=ExtResource("5_4b5sl")]
 script = ExtResource("6_4deea")

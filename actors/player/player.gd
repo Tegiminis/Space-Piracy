@@ -14,11 +14,7 @@ func _input(event: InputEvent) -> void:
 	pass
 
 func _process(delta: float) -> void:
-	var inv_debug_str : String = ""
-	for key in cargo.inventory:
-		var value = cargo.inventory[key]
-		inv_debug_str += "Item: " + str(value["ref"].name) + " | " + "Stacks: " + str(value["stacks"]) + "\n"
-	hud.cargo.text = inv_debug_str
+	pass
 
 func _physics_process(delta: float) -> void:
 	
@@ -47,4 +43,10 @@ func _physics_process(delta: float) -> void:
 		camera.zoom *= 1.1
 	if Input.is_action_just_pressed("zoom_out"):
 		camera.zoom *= 0.9
-	
+
+func _on_cargo_inventory_added_item(item: Variant, stacks: Variant) -> void:
+	var inv_debug_str : String = ""
+	for key in cargo.inventory:
+		var value = cargo.inventory[key]
+		inv_debug_str += "Item: " + str(value["ref"].name) + " | " + "Stacks: " + str(value["stacks"]) + "\n"
+	hud.cargo.text = inv_debug_str
