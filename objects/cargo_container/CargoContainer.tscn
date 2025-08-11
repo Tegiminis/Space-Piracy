@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bjfvop78828wx"]
 
-[ext_resource type="Script" uid="uid://cdyshjrjp06sq" path="res://objects/cargo/container.gd" id="1_cyjns"]
+[ext_resource type="Script" uid="uid://cdyshjrjp06sq" path="res://objects/cargo_container/cargo_container.gd" id="1_cyjns"]
 [ext_resource type="Texture2D" uid="uid://ng5bxajltodo" path="res://sprites/pickup-1-sheet.png" id="2_chr78"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rlx8"]

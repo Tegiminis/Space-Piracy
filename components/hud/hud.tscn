@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dtdul0e476fqk"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Speed" type="Label" parent="."]
+offset_left = 322.0
+offset_top = 263.0
+offset_right = 370.0
+offset_bottom = 286.0
+text = "Speed"
+
+[node name="Rotation" type="Label" parent="."]
+offset_left = 313.0
+offset_top = 286.0
+offset_right = 380.0
+offset_bottom = 309.0
+text = "Rotation"
+
+[node name="Cargo" type="Label" parent="."]
+offset_left = 717.0
+offset_top = 264.0
+offset_right = 763.0
+offset_bottom = 287.0
+text = "Cargo"

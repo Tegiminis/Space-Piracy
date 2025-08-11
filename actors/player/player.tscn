@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dehoi63e4uru4"]
+[gd_scene load_steps=7 format=3 uid="uid://dehoi63e4uru4"]
 
 [ext_resource type="Script" uid="uid://vi18hjd2sbii" path="res://actors/player/player.gd" id="1_ilk7j"]
 [ext_resource type="Texture2D" uid="uid://b3chcwm3qclqe" path="res://sprites/Kitty-Fighter-1.png" id="1_nvxhs"]
+[ext_resource type="Script" uid="uid://bcxihwjlgobj0" path="res://components/cargo/cargo_inventory.gd" id="3_ax26v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilk7j"]
 size = Vector2(20, 95)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ax26v"]
 radius = 35.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsqbn"]
+size = Vector2(128, 128)
 
 [node name="Player" type="RigidBody2D"]
 z_index = 1
@@ -32,22 +36,8 @@ shape = SubResource("CircleShape2D_ax26v")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CargoInventory" type="Area2D" parent="."]
+script = ExtResource("3_ax26v")
 
-[node name="Rotation" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -74.0
-offset_top = -82.0
-offset_right = -34.0
-offset_bottom = -59.0
-
-[node name="Speed" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -74.0
-offset_top = -110.0
-offset_right = -34.0
-offset_bottom = -87.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CargoInventory"]
+shape = SubResource("RectangleShape2D_lsqbn")

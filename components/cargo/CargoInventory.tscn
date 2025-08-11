@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctp8gdxg3st4h"]
+
+[ext_resource type="Script" uid="uid://bcxihwjlgobj0" path="res://components/cargo/cargo_inventory.gd" id="1_jhjmk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cjhd"]
+
+[node name="CargoInventory" type="Area2D"]
+script = ExtResource("1_jhjmk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1cjhd")

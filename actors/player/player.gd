@@ -3,36 +3,30 @@ extends RigidBody2D
 @export var acceleration = 200
 @export var brake = 1
 
-@onready var gui_speed = $Control/Speed
-@onready var gui_torque = $Control/Rotation
+@export var hud : CanvasLayer
 @onready var camera = $Camera2D
-
-var cargo : Dictionary
-var weight : int:
-	get:
-		var _weight = 0
-		for item in cargo:
-			_weight += item["ref"].weight * item["stacks"]
-		return _weight
-	set(value):
-		push_error(str(self) +": You cannot set an inventory's weight directly!")
-@export var weight_max : int = 10
+@onready var cargo = $CargoInventory
 
 func _ready() -> void:
-	cargo = {}
+	pass
 
 func _input(event: InputEvent) -> void:
 	pass
 
 func _process(delta: float) -> void:
-	pass
+	var inv_debug_str : String = ""
+	for key in cargo.inventory:
+		var value = cargo.inventory[key]
+		inv_debug_str += "Item: " + str(value["ref"].name) + " | " + "Stacks: " + str(value["stacks"]) + "\n"
+	hud.cargo.text = inv_debug_str
 
 func _physics_process(delta: float) -> void:
 	
 	linear_damp = 0
 	
-	gui_speed.text = str(linear_velocity)
-	gui_torque.text = str(angular_velocity)
+	var int_speed = snapped(linear_velocity.length(), 1)
+	hud.speed.text = "Speed: " + str(int_speed) + "u/s"
+	hud.angular.text = "Torque: " + str(snapped(angular_velocity,0.01)) + "arcsec"
 	
 	var direction = position.angle()
 	
