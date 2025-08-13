@@ -1,6 +1,16 @@
-[gd_scene format=3 uid="uid://dtdul0e476fqk"]
+[gd_scene load_steps=4 format=3 uid="uid://dtdul0e476fqk"]
 
-[node name="HUD" type="CanvasLayer"]
+[ext_resource type="Script" uid="uid://cxpw6y2cssp6p" path="res://components/hud/hud.gd" id="1_p67qi"]
+
+[sub_resource type="SystemFont" id="SystemFont_p67qi"]
+
+[sub_resource type="Theme" id="Theme_kjhcr"]
+default_font = SubResource("SystemFont_p67qi")
+default_font_size = 12
+
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("cargo_list")]
+script = ExtResource("1_p67qi")
+cargo_list = NodePath("CargoList")
 
 [node name="Speed" type="Label" parent="."]
 offset_left = 322.0
@@ -22,3 +32,11 @@ offset_top = 264.0
 offset_right = 763.0
 offset_bottom = 287.0
 text = "Cargo"
+
+[node name="CargoList" type="ItemList" parent="."]
+offset_left = 720.0
+offset_top = 293.0
+offset_right = 843.0
+offset_bottom = 333.0
+theme = SubResource("Theme_kjhcr")
+max_columns = 5

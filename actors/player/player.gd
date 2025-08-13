@@ -8,7 +8,7 @@ extends RigidBody2D
 @onready var cargo = $CargoInventory
 
 func _ready() -> void:
-	pass
+	hud.cargo_list.item_activated.connect(_cargo_jettison_button_pressed)
 
 func _input(event: InputEvent) -> void:
 	pass
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		camera.zoom *= 0.9
 	
 	if Input.is_action_just_pressed("jettison"):
-		cargo.jettison_item("Debug")
+		cargo.jettison("Debug")
 
 func _update_cargo_hud():
 	var inv_debug_str : String = ""
@@ -55,7 +55,14 @@ func _update_cargo_hud():
 	hud.cargo.text = inv_debug_str
 
 func _on_cargo_inventory_added(item: Variant, stacks: Variant) -> void:
-	_update_cargo_hud()
+	# _update_cargo_hud()
+	hud.cargo_list.add_item(item.name)
 
 func _on_cargo_inventory_jettisoned(container: Variant) -> void:
-	_update_cargo_hud()
+	# _update_cargo_hud()
+	pass
+
+func _cargo_jettison_button_pressed(indx:int):
+	var _item = hud.cargo_list.get_item_text(indx)
+	cargo.jettison(_item)
+	hud.cargo_list.remove_item(indx)

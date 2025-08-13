@@ -5,12 +5,22 @@
 [ext_resource type="PackedScene" uid="uid://bjfvop78828wx" path="res://objects/cargo_container/CargoContainer.tscn" id="3_nve11"]
 [ext_resource type="Script" uid="uid://h7tcafjig66e" path="res://resources/item.gd" id="4_a3sma"]
 [ext_resource type="PackedScene" uid="uid://dtdul0e476fqk" path="res://components/hud/hud.tscn" id="5_4b5sl"]
-[ext_resource type="Script" uid="uid://cxpw6y2cssp6p" path="res://components/hud/hud.gd" id="6_4deea"]
 
-[sub_resource type="Resource" id="Resource_4b5sl"]
+[sub_resource type="Resource" id="Resource_bey5n"]
 resource_local_to_scene = true
 script = ExtResource("4_a3sma")
-name = "Debug"
+name = "Iron"
+weight = 1
+size = 1
+base_value = 1.0
+can_stack = true
+unique = false
+container = ExtResource("3_nve11")
+metadata/_custom_type_script = "uid://h7tcafjig66e"
+
+[sub_resource type="Resource" id="Resource_4b5sl"]
+script = ExtResource("4_a3sma")
+name = "Nickel"
 weight = 1
 size = 1
 base_value = 1.0
@@ -32,8 +42,11 @@ texture = ExtResource("2_btyhq")
 
 [node name="Cargo" parent="." instance=ExtResource("3_nve11")]
 position = Vector2(361, 193)
+item = SubResource("Resource_bey5n")
+stacks = 3
+
+[node name="Cargo2" parent="." instance=ExtResource("3_nve11")]
+position = Vector2(275, 191)
 item = SubResource("Resource_4b5sl")
-stacks = 11
 
 [node name="HUD" parent="." instance=ExtResource("5_4b5sl")]
-script = ExtResource("6_4deea")

@@ -41,17 +41,18 @@ func add(item:Item, stacks:int = 1) -> int:
 	return stacks_left
 
 ## Jettisons the cargo with the specified key in the cargo inventory
-func jettison_item(key:String):
+func jettison(key:String):
 	if key not in inventory:
 		return
 	var item_dict : Dictionary = inventory[key]
 	var container : PackedScene = item_dict["item"].container
 	var _obj = container.instantiate()
 	var magnitude = randi_range(100,400)
-	add_child(_obj)
 	_obj.set_contents(item_dict)
 	_obj.pickup_delay = 5.0
 	_obj.linear_velocity = owner.linear_velocity
+	_obj.global_position = owner.global_position
 	_obj.apply_impulse(Vector2(randf(),randf()) * magnitude )
+	get_tree().root.get_child(0).add_child(_obj)
 	inventory.erase(key)
 	jettisoned.emit(_obj)
