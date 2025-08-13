@@ -16,6 +16,7 @@ size = 1
 base_value = 1.0
 can_stack = true
 unique = false
+container = ExtResource("3_nve11")
 metadata/_custom_type_script = "uid://h7tcafjig66e"
 
 [node name="DebugMain" type="Node2D"]

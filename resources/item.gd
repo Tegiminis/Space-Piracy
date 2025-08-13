@@ -8,3 +8,4 @@ class_name Item
 #todo: add "unique item" logic
 @export var can_stack : bool = true
 @export var unique : bool = false
+@export var container : PackedScene = preload("res://objects/cargo_container/CargoContainer.tscn")
