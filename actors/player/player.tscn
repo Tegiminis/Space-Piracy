@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dehoi63e4uru4"]
+[gd_scene load_steps=9 format=3 uid="uid://dehoi63e4uru4"]
 
 [ext_resource type="Script" uid="uid://vi18hjd2sbii" path="res://actors/player/player.gd" id="1_ilk7j"]
 [ext_resource type="Texture2D" uid="uid://b3chcwm3qclqe" path="res://sprites/Kitty-Fighter-1.png" id="1_nvxhs"]
 [ext_resource type="Script" uid="uid://bcxihwjlgobj0" path="res://components/cargo/cargo_inventory.gd" id="3_ax26v"]
+[ext_resource type="Script" uid="uid://xcops28rerud" path="res://actors/player/hardpoint.gd" id="4_lsqbn"]
+[ext_resource type="PackedScene" uid="uid://0f56kwfhhpo7" path="res://objects/projectiles/plasma.tscn" id="5_6p1w3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilk7j"]
 size = Vector2(20, 95)
@@ -15,7 +17,8 @@ size = Vector2(128, 128)
 
 [node name="Player" type="RigidBody2D"]
 z_index = 1
-collision_mask = 4
+collision_layer = 2
+collision_mask = 13
 gravity_scale = 0.0
 inertia = 10.0
 linear_damp_mode = 1
@@ -37,10 +40,18 @@ shape = SubResource("CircleShape2D_ax26v")
 zoom = Vector2(0.5, 0.5)
 
 [node name="CargoInventory" type="Area2D" parent="."]
+collision_mask = 16
 script = ExtResource("3_ax26v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CargoInventory"]
 shape = SubResource("RectangleShape2D_lsqbn")
+
+[node name="Hardpoint" type="Node2D" parent="."]
+position = Vector2(12, -44)
+script = ExtResource("4_lsqbn")
+projectile = ExtResource("5_6p1w3")
+
+[node name="RayCast2D" type="RayCast2D" parent="Hardpoint"]
 
 [connection signal="added" from="CargoInventory" to="." method="_on_cargo_inventory_added"]
 [connection signal="jettisoned" from="CargoInventory" to="." method="_on_cargo_inventory_jettisoned"]

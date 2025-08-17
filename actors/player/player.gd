@@ -6,6 +6,7 @@ extends RigidBody2D
 @export var hud : CanvasLayer
 @onready var camera = $Camera2D
 @onready var cargo = $CargoInventory
+@onready var hardpoint = $Hardpoint
 
 func _ready() -> void:
 	hud.cargo_list.item_activated.connect(_cargo_jettison_button_pressed)
@@ -17,7 +18,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	
 	linear_damp = 0
 	
 	var int_speed = snapped(linear_velocity.length(), 1)
@@ -46,6 +46,9 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jettison"):
 		cargo.jettison("Debug")
+	
+	if Input.is_action_just_pressed("fire"):
+		hardpoint.fire()
 
 func _update_cargo_hud():
 	var inv_debug_str : String = ""

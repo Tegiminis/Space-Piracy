@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cxpw6y2cssp6p" path="res://components/hud/hud.gd" id="1_p67qi"]
 
 [sub_resource type="SystemFont" id="SystemFont_p67qi"]
+subpixel_positioning = 0
 
 [sub_resource type="Theme" id="Theme_kjhcr"]
 default_font = SubResource("SystemFont_p67qi")
