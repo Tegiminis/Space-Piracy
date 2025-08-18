@@ -25,7 +25,4 @@ func _projectile_collided(object:Node):
 		var taken = _health.injure(damage, false, 0, false, source)
 	linear_velocity = Vector2.ZERO
 	var anim_randomizer = randf()
-	if anim_randomizer < 0.5: animator.play("impact")
-	else: animator.play("impact_alt")
-	
-	
+	animator.play("impact")
